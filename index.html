@@ -31,7 +31,7 @@
                 </script>
             </p>
             <p> Please import external file hello.js here. 
-                
+                <script src="./js/hello.js"></script>
             </p>
         </div>
 
@@ -45,7 +45,13 @@
         <div class="practice">
             <h1> JavaScript Escape Sequence</h1>
             <p> Write an image to the page </p>
-
+            <script>
+                document.writeln(`<img src="./img/die1.png">`)
+                for(let i = 1; i < 7; i+=1)
+                {
+                    document.writeln(`<img src="./img/die`+i+`.png">`)
+                }
+            </script>
 
             <p> Write a table to the page </p>
 
@@ -55,7 +61,8 @@
             <h1>Window and document object </h1>
             <p> Try alert, open, location, url </p>
             <script>
-
+                window.alert("ih");
+                document.writeln(document.URL);
             </script>
 
 
@@ -65,7 +72,13 @@
             <h1> Get textcontent of an element </h1>
             <p>Perform arithmetic operation on <span id="num1"> 4 </span> and <span id="num2">5 </span> </p>
             <p>Result:
-                <script src="js/arith.js"></script>
+                <script>
+                    const s1 = document.getElementById("num1");
+                    const s2 = document.getElementById("num2");
+                    const n1 = parseInt(s1.textContent);
+                    const n2 = parseInt(s2.textContent);
+                    document.writeln(n1 + n2)
+                </script>
             </p>
 
         </div>
