@@ -87,9 +87,15 @@
             <h1> Get innerHTML of an elemnt</h1>
             <p id="p1"> Paragraph Number One </p>
             <p id="p2"> Paragraph Number two </p>
-            <p id="p3"> Paragraph Number three </p>
-            <p>Please write JavaScript code to change the content of each paragraph.​
-            <p>
+            <p id="p3" onclick="changeP();"> Paragraph Number three </p>
+            <p>Please write JavaScript code to change the content of each paragraph.​</p>
+            <script>
+                function changeP()
+                {
+                    document.getElementById("p1").innerHTML = "<b>Spam</b>";
+                }
+                document.getElementById("p2").textContent = "<b>Spam</b>";
+            </script>
 
 
         </div>
@@ -99,8 +105,11 @@
             <p> Please enter your numbers </p>
             <script>
                 function calculate() {
-
-
+                    const s1 = document.getElementsByName("num1")[0].value;
+                    const s2 = document.getElementsByName("num2")[0].value;
+                    const n1 = parseFloat(s1);
+                    const n2 = parseFloat(s2);
+                    document.getElementById("result").innerText = n1 + n2;
                 }
             </script>
             <p> <input type="text" name="num1" /> + <input type="text" name="num2">
@@ -128,6 +137,18 @@
                         <input type="text" id="cEmail">
                     </label>
                 </p>
+                <script>
+                    function w()
+                    {
+                        console.log("Fired");
+                        let n = document.getElementById("cName");
+                        let m = document.getElementById("message");
+                        m.textContent =  "yo " + n.value; 
+                    }
+
+                    let n = document.getElementById("cName");
+                    n.addEventListener("blur", w, false);
+                </script>
             </form>
 
         </div>
@@ -135,9 +156,17 @@
         <div class="practice">
             <h1> Practice - Calculate Square</h1>
             Calculating Square:
-            <input type="text" id="num" placeholder="Type in a number"> <sup> 2 </sup> =
-            <label id="result"> ? </label>
-
+            <input type="text" id="nu" placeholder="Type in a number"> <sup> 2 </sup> =
+            <label id="resulta"> ? </label>
+            <script>
+                function c()
+                {
+                    const input = document.getElementById("nu").value;
+                    const n = parseInt(input);
+                    document.getElementById("resulta").innerText = n*n;
+                }
+                document.getElementById("nu").addEventListener("blur", c, false)
+            </script>
         </div>
 
         <div class="practice">
@@ -150,9 +179,16 @@
 
             <input type="button" id="tryit" value="Click and Display">​
 
-            <div id="message">​
+            <div id="massage">​
             </div>
-
+            <script>
+                function cnd()
+                {
+                    const input = document.getElementById("code").value;
+                    document.getElementById("massage").innerHTML = input;
+                }
+                document.getElementById("tryit").addEventListener("click", cnd, false);
+            </script>
 
         </div>
 
