@@ -211,8 +211,30 @@
             </p>
 
             <script type="text/javascript">
+                let yearE = document.getElementById("year");
+                let conditionE = document.getElementById("condition");
+                let priceE = document.getElementById("price");
 
-
+                function get_price()
+                {
+                    const year = yearE.value;
+                    const condition = conditionE.value;
+                    let price = 0;
+                    if (year === "2003")
+                    {
+                        if (condition === "Fair")
+                        {
+                            price = 2000;
+                        }
+                        else
+                        {
+                            price = 3000;
+                        }
+                    }
+                    priceE.textContent = price;
+                }
+                yearE.addEventListener("change", get_price, false);
+                conditionE.addEventListener("change", get_price, false);
 
             </script>
 
@@ -223,7 +245,33 @@
             <p> Choose your favorite theme(warm, cool, hot)
                 <input type="text" id="theme">
             </p>
+            <script>
+                let themeE = document.getElementById("theme");
 
+                function change_color()
+                {
+                    const theme = themeE.value;
+                    let color = "white";
+                    switch (theme)
+                    {
+                        case "warm":
+                            color = "green";
+                            break;
+                        case "hot":
+                            color = "red";
+                            break;
+                        case "cool":
+                            color = "blue";
+                            break;
+                        default:
+                            color = "white";
+                            break;
+                    }
+                    document.body.setAttribute("style", "background-color: " + color);
+                }
+
+                themeE.addEventListener("change", change_color, false);
+            </script>
         </div>
 
 
@@ -247,12 +295,24 @@
 
             </p>
             <p>
-                <input type="button" value="Check Premium">
+                <input type="button" value="Check Premium" id="check">
             </p>
             <p id="result">
 
             </p>
+           <script>
+               let check = document.getElementById("coverage");
+               
+               function calculate_coverage()
+               {
+                    let coverageE= document.querySelector("input[name='coverage']:checked");
+                    const coverage = parseInt(coverageE.value);
+                    console.log(coverage);
+               }
 
+               check.addEventListener("click", calculate_coverage, false);
+
+           </script>
         </div>
 
 
