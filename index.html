@@ -297,17 +297,47 @@
             <p>
                 <input type="button" value="Check Premium" id="check">
             </p>
-            <p id="result">
+            <p id="resultx">
 
             </p>
            <script>
-               let check = document.getElementById("coverage");
+               let check = document.getElementById("check");
                
                function calculate_coverage()
                {
-                    let coverageE= document.querySelector("input[name='coverage']:checked");
+                    let coverageE = document.querySelector("input[name='coverage']:checked");
                     const coverage = parseInt(coverageE.value);
-                    console.log(coverage);
+                    let ageGroupE = document.getElementById("agegroup");
+                    let ageFactor = 0;
+                    switch (ageGroupE.selectedIndex)
+                    {
+                        case 0: 
+                            ageFactor = 0.08;
+                            break;
+                        case 1:
+                            ageFactor = 0.09;
+                            break;
+                        case 2:
+                            ageFactor = 0.11;
+                            break;
+                        case 3:
+                            ageFactor = 0.17;
+                            break;
+                        case 4:
+                            ageFactor = 0.29;
+                            break;
+                        case 5:
+                            ageFactor = 0.48;
+                            break;
+                        case 6:
+                            ageFactor = 0.75;
+                            break;
+                        case 7:
+                            ageFactor = 1.17;
+                            break;
+                    }
+                    const premium = ageFactor * (coverage / 1000);
+                    document.getElementById("resultx").innerText = premium;
                }
 
                check.addEventListener("click", calculate_coverage, false);
@@ -323,9 +353,19 @@
             <p> Display the square of numer 1... N </p>
             <p> N = <input type="number" min="1" max="10" id="inputnumber1"> </p>
             <p>
-                <input type="button" value="Click for Square">
+                <input type="button" value="Click for Square", id="csq">
             </p>
-
+            <script>
+                function csq()
+                {
+                    const inputnumber1 = parseInt(document.getElementById("inputnumber1"));
+                    for (const i = 1; i <= inputnumber1; i+=1)
+                    {
+                        document.writeln("<h2>"+(i**2)+"<h2>");
+                    }
+                }
+                document.getElementById("csq").addEventListener("click", csq, false);
+            </script>
         </div>
 
 
