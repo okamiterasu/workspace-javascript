@@ -8,6 +8,12 @@
     <script src="https://code.jquery.com/jquery-3.5.1.js"
         integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 
+    <script>
+        $(document).ready(function()
+        {
+            continue
+        })
+    </script>
 
 </head>
 
@@ -382,6 +388,9 @@
 
 
             </div>
+            <script>
+                
+            </script>
 
         </div>
 
@@ -407,7 +416,7 @@
         <div class="practice">
             <h1>Change Attribute -- Rolling a dice </h1>
             <p> <input type="button" id="roll" value="roll" /> </p>
-            <p> <img src="img/die1.png"> </p>
+            <p> <img id="dimage" src="img/die1.png"> </p>
             <table>
                 <tr>
                     <th>Result</th>
@@ -428,7 +437,18 @@
                     <td id="r6"></td>
                 </tr>
             </table>
-
+            <script>
+                let stats = [0, 0, 0, 0, 0, 0];
+                function roll()
+                {
+                    const result = Math.floor(Math.random() * 6) + 1;
+                    let dimage = document.getElementById("dimage");
+                    dimage.setAttribute("src", "./img/die"+result+".png");
+                    stats[result-1]+=1;
+                    document.getElementById("r"+result).innerText = stats[result-1];
+                }
+                document.getElementById("roll").addEventListener("click", roll, false);
+            </script>
         </div>
 
 
@@ -449,7 +469,24 @@
             <div class="img-container-hide">
                 <img src="img/usca5.jpg" alt="usca">
             </div>
-
+            <script>
+                const containers = document.getElementsByClassName("img-container-hide");
+                let next_index = 0;
+                function unhide()
+                {
+                    for (const container of containers)
+                    {
+                        container.setAttribute("class", "img-container-hide");
+                    }
+                    const current_index = next_index;
+                    console.log(current_index);
+                    const current_container = containers[current_index];
+                    current_container.setAttribute("class", "img-container");
+                    next_index = (current_index + 1) % (containers.length + 1);
+                    console.log(next_index);
+                }
+                setInterval(unhide, 3000);
+            </script>
         </div>
 
 
