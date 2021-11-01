@@ -11,7 +11,17 @@
     <script>
         $(document).ready(function()
         {
-            continue
+            $("body").hide().fadeIn(3000);
+            $("img").hide();
+            $("h1").mouseover(function()
+            {
+                const self = $(this);
+                self.slideUp();
+                self.text("changed");
+                self.slideDown();
+                self.next().hide();
+                self.parent().children("p").slideToggle();
+            });
         })
     </script>
 
